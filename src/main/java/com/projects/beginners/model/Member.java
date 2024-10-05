@@ -1,11 +1,20 @@
 package com.projects.beginners.model;
 
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Member {
 
+    @Id
     private String id;
     private String name;
     private String email;
     private String address;
+
+    public Member() {
+    }
 
     public Member(String id, String name, String email, String address) {
         this.id = id;
