@@ -1,5 +1,6 @@
 package com.projects.beginners.service.impl;
 
+import com.projects.beginners.exception.MemberNotFoundException;
 import com.projects.beginners.model.Member;
 import com.projects.beginners.repository.MemberRepository;
 import com.projects.beginners.service.MemberService;
@@ -36,6 +37,9 @@ public class MemberServiceIMPL implements MemberService {
 
     @Override
     public Member getMember(String id) {
+        if (memberRepository.findById(id).isEmpty()) {
+            throw new MemberNotFoundException("Requested member not found");
+        }
         return memberRepository.findById(id).get();
     }
 
